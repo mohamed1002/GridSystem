@@ -1,0 +1,102 @@
+// GRID
+[class~= "#{$gridName}"],
+[class*= "#{$gridName}"]{
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 ($gutter/2);
+}
+// COLS
+[class~= "#{$colName}"],
+[class*= "#{$colName}"]{
+    padding: ($gutter-vertical) ($gutter/2);
+    max-width: 100%;
+    flex: 1 1 0%;
+}
+
+/************************
+    HELPERS SUFFIXES
+*************************/
+
+// FOR GRID
+[class*= "#{$gridName}"]{
+
+    // No Gutter
+    &[class*= "noGutter"]{
+        margin:0;
+        padding:0;
+        > [class*="#{$colName}"]{
+            margin:0;
+            padding:0;
+        }
+    }
+
+    // No Wrapping
+    &[class*= "nowrap"]{
+        flex-wrap: nowrap
+    }
+
+    // Horizontal alignment on center
+    &[class*= "center"]{
+        justify-content: center
+    }
+
+    // Vertical alignment on middle
+    &[class*= "middle"]{
+        align-items: center
+    }
+
+    // Vertical alignment on top
+    &[class*= "top"]{
+        align-items: flex-start
+    }
+
+    // Vertical alignment on end
+    &[class*= "bottom"]{
+        align-items: flex-end
+    }
+
+    // Orders
+    &[class*= "reverse"]{
+        flex-direction: row-reverse
+    }
+    &[class*= "column"]{
+        flex-direction: column
+    }
+    &[class*= "column-reverse"]{
+        flex-direction: column-reverse
+    }
+}
+
+
+// FOR COLS
+[class*= "#{$colName}"]{
+    &[class*="-top"]{
+        align-self: flex-start;
+    }
+    &[class*="-middle"]{
+        align-self: center;
+    }
+    &[class*="-bottom"]{
+        align-self: flex-end;
+    }
+    &[class*="-first"]{
+        order: -1;
+    }
+    &[class*="-last"]{
+        order: 1;
+    }
+}
+
+// Include Function make container
+.#{$containerName}{
+    @include makeContainerWidth();
+    margin:auto;
+}
+
+// Grid System Number 
+@include makeGridByNumber($gridName);
+
+// Grid System Number and breakpoints 
+@include makeGridSystemNumber($colName);
+@include makeGridSystemNumber($gridName);

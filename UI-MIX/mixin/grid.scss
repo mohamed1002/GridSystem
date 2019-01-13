@@ -1,0 +1,55 @@
+// Make the breakpoints
+@mixin breakpoint($type,$media){
+    @if map-has-key($breakpoints , $media ){
+        $get : map-get($breakpoints, $media);
+        @media(#{$type}: #{$get}){
+            @content;
+        }
+    }
+    @else{
+        @error "Media is not defined";
+    }
+}
+
+// Function to generate the grid by number
+@mixin makeGridByNumber($grid){
+    @for $i from 1 through $colCount{
+        [class*=#{$grid}-#{$i}] > [class*=#{$colName}] , [class*=#{$grid}] > [class*=#{$colName}-#{$i}]{
+            flex-basis: ($i/$colCount) * 100%;
+            max-width: ($i/$colCount) * 100%;
+        }
+    }
+}
+
+// Make container width
+@mixin makeContainerWidth(){
+    @each $key,$value in $breakpoints{
+        @include breakpoint(min-width,$key ){
+            width: #{map-get($container-list, $key)}
+        }
+    }
+}
+
+// Make grid system via breakpoints
+@mixin makeGridSystemNumber($gridName) {
+    @each $key,$value in $breakpoints {
+        @for $i from 1 through $colCount{
+            
+            @if $gridName == row {
+                .#{$gridName}-#{$key}-#{$i} > [class*=#{$colName}]{
+                    @include breakpoint(min-width,$key){
+                        max-width: ($i/$colCount * 100%);
+                        flex-basis: ($i/$colCount * 100%);
+                    } 
+                }
+            }@else{
+                .#{$gridName}-#{$key}-#{$i}{
+                    @include breakpoint(min-width,$key){
+                        max-width: ($i/$colCount * 100%);
+                        flex-basis: ($i/$colCount * 100%);
+                    } 
+                }
+            }
+        }
+    }
+}

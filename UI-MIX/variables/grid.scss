@@ -1,0 +1,24 @@
+//************************
+//    VARIABLES
+//************************
+
+$colCount       :   12;
+$gridName       :   row;
+$colName        :   col ;
+$gutter         :   1rem; 
+$gutter-vertical:   1rem;
+$containerName  : container;
+
+$breakpoints     : (
+    xs: 36em,
+    sm: 48em,
+    md: 62em,
+    lg: 75em,
+);
+
+$container-list  : (
+    xs : 34em,
+    sm : 45em,
+    md : 60em,
+    lg : 71em
+);
