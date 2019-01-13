@@ -53,3 +53,16 @@
         }
     }
 }
+
+// Make Display List
+@mixin displayList() {
+    @each $key,$value in $breakpoints {
+        @each $type,$result in $display-list{
+            [class*=#{$type}-#{$key}]{
+                @include breakpoint(max-width,$key ){
+                    display: $result
+                }
+            }
+        }
+    }
+}

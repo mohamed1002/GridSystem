@@ -100,3 +100,7 @@
 // Grid System Number and breakpoints 
 @include makeGridSystemNumber($colName);
 @include makeGridSystemNumber($gridName);
+
+
+// Make display List
+@include displayList()

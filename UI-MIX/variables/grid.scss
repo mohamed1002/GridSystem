@@ -22,3 +22,12 @@ $container-list  : (
     md : 60em,
     lg : 71em
 );
+
+$display-list   : (
+    block        : block,
+    grid         : grid,
+    none         : none,
+    inline       : inline,
+    flex         : flex,
+    inline-block : inline-block
+)

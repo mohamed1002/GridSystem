@@ -1,0 +1,22 @@
+@import "../mixin/input";
+
+$_buttons-list: (
+  "button",
+  "[type='button']",
+  "[type='reset']",
+  "[type='submit']",
+);
+
+$inputs-list: (
+  "button",
+  "[type='button']",
+  "[type='reset']",
+  "[type='submit']",
+);
+
+$all-buttons: assign-inputs($_buttons-list,active);
+$all-inputs: assign-inputs($_buttons-list,active);
+
+$normal-padding:.5em 1em;
+$small-padding:.5em;
+$big-padding:1em;
